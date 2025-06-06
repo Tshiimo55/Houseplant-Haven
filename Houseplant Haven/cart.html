@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="plant logo.jpg">
+  <title>Cart | Houseplant Haven</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f1e8;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 15px 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px #4d664d;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #4a634a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2c3e50;
+    }
+
+    .cart-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+    }
+
+    .cart-container table {
+      width: 80%;
+      margin-top: 20px;
+      border-collapse: collapse;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: center;
+      border-bottom: 1px solid #ccc;
+    }
+
+    .total {
+      text-align: center;
+      font-size: 1.2rem;
+      margin-top: 30px;
+    }
+
+    .checkout-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #4a634a;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+
+    .checkout-button:hover {
+      background-color: #3a513a;
+    }
+
+    footer {
+      background-color: #e8e3d9;
+      text-align: center;
+      padding: 20px;
+      color: #4a634a;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-top: 1px solid #dcd6c6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Houseplant Haven</h1>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒</a>
+    </nav>
+  </header>
+
+  <div class="cart-container">
+    <h2>Your Cart</h2>
+    <table>
+      <thead>
+        <tr>
+          <th>Product</th>
+          <th>Price</th>
+          <th>Quantity</th>
+          <th>Subtotal</th>
+        </tr>
+      </thead>
+      <tbody id="cart-items">
+        <!-- Cart items will be populated here by JavaScript -->
+      </tbody>
+    </table>
+    <div class="total" id="total-price">Total: R0</div>
+    <button class="checkout-button">Proceed to Checkout</button>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Houseplant Haven by Tshimologo Nchoe. All rights reserved.</p>
+  </footer>
+
+  <script>
+// Load cart from localStorage
+  function loadCart() {
+    const cart = JSON.parse(localStorage.getItem("cart")) || [];
+    return cart;
+  }
+
+  // Save cart to localStorage
+  function saveCart(cart) {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }
+
+  // Render cart items to the table
+  function renderCartTable() {
+    const cart = loadCart();
+    const tbody = document.getElementById("cart-items");
+    const totalEl = document.getElementById("total-price");
+    if (!tbody || !totalEl) return;
+
+    tbody.innerHTML = "";  // Clear existing table rows
+    let total = 0;
+
+    cart.forEach((item, index) => {
+      const row = document.createElement("tr");
+      row.innerHTML = `
+        <td>${item.name}</td>
+        <td>R${item.price}</td>
+        <td><input type="number" value="${item.quantity}" min="1" onchange="updateQuantity(${index}, this.value)"/></td>
+        <td>R${item.subtotal}</td>
+      `;
+      total += item.subtotal;
+      tbody.appendChild(row);
+    });
+
+    totalEl.textContent = "Total: R" + total;
+  }
+
+  // Update item quantity
+  function updateQuantity(index, newQty) {
+    let cart = loadCart();
+    newQty = parseInt(newQty);
+    if (newQty < 1) return;
+    cart[index].quantity = newQty;
+    cart[index].subtotal = newQty * cart[index].price;
+    saveCart(cart);
+    renderCartTable();
+  }
+
+  // Initialize cart page and checkout button event
+  document.addEventListener("DOMContentLoaded", function () {
+    renderCartTable();
+
+    const checkoutButton = document.querySelector(".checkout-button");
+    if (checkoutButton) {
+      checkoutButton.addEventListener("click", function () {
+        const cart = loadCart();
+        if (cart.length === 0) {
+          alert("Your cart is empty. Please add items before proceeding to checkout.");
+          return;
+        }
+        // ✅ Navigate to checkout page
+        window.location.href = "checkout.html";
+      });
+    }
+  });
+  </script>
+</body>
+</html>

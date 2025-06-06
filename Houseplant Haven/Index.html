@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Login | Houseplant Haven</title>
+  <style>
+    body {
+      background: #f5f1e8;
+      font-family: 'Segoe UI', sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+
+    .login-box {
+      background: white;
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      text-align: center;
+      width: 300px;
+    }
+
+    .logo {
+      width: 80px;
+      margin-bottom: 20px;
+    }
+
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 10px 0;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background-color: #4a634a;
+      color: white;
+      border: none;
+      padding: 10px;
+      width: 100%;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #3a513a;
+    }
+  </style>
+</head>
+<body>
+  <div class="login-box">
+    <img src="plant logo.jpg" alt="Houseplant Haven Logo" class="logo" />
+    <h2>Login to Houseplant Haven</h2>
+    <input type="text" id="username" placeholder="Enter username" required />
+    <input type="password" id="password" placeholder="Enter password" required />
+    <button onclick="login()">Login</button>
+  </div>
+
+  <script>
+    function login() {
+      const username = document.getElementById("username").value.trim();
+      const password = document.getElementById("password").value.trim();
+
+      // Simple check — replace with real authentication later
+      if (username && password) {
+        window.location.href = "home.html"; // Redirect after "login"
+      } else {
+        alert("Please enter a username and password.");
+      }
+    }
+  </script>
+</body>
+</html>

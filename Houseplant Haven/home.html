@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="plant logo.jpg">
+  <title>Houseplant Haven | Tshimologo Nchoe</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f1e8;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 15px 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px #4d664d;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #4a634a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+      cursor: pointer;
+    }
+
+
+    nav a:hover {
+      color: #2c3e50;
+    }
+
+    .home {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      padding: 30px 20px;
+      animation: fadeInUp 1.2s ease;
+    }
+
+    .home img.logo {
+      width: 100px;
+      height: auto;
+      margin-bottom: 20px;
+    }
+
+    .home img.showcase {
+      max-width: 60%;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+    }
+
+    .intro {
+      text-align: center;
+      max-width: 700px;
+    }
+
+    .intro h2 {
+      color: #4a634a;
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+      font-weight: bold;
+      text-shadow: 0px 1px 1px #c0c0c0;
+    }
+
+    .intro p {
+      font-size: 1rem;
+      line-height: 1.6;
+      color: #3e4e3e;
+    }
+
+    .shop-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #4a634a;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      transition: background-color 0.3s;
+    }
+
+    .shop-button:hover {
+      background-color: #3a513a;
+    }
+
+    footer {
+      background-color: #e8e3d9;
+      text-align: center;
+      padding: 20px;
+      color: #4a634a;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-top: 1px solid #dcd6c6;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      nav {
+        margin-top: 10px;
+      }
+
+      .intro h2 {
+        font-size: 1.4rem;
+      }
+
+      .intro p {
+        font-size: 0.95rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Houseplant Haven</h1>
+    <nav>
+      <a id="aboutLink" onclick="goToAbout()">About</a>
+      <a id="productsLink" onclick="goToProducts()">Products</a>
+      <a id="contactLink" onclick="goToContact()">Contact</a>
+      <a href="#cart">🛒</a>
+    </nav>
+  </header>
+
+  <section class="home">
+    <img src="plant logo.jpg" alt="Houseplant Haven Logo" class="logo" />
+    <div class="intro">
+      <h2>Welcome to Your Indoor Jungle where you can buy or sell indoor plants</h2>
+      <p>Explore a lush collection of houseplants that bring life, joy, and clean air into your home. From beginner-friendly greens to rare tropical beauties, Houseplant Haven is your new favorite plant shop.</p>
+      <button class="shop-button" onclick="goToProducts()">Shop Now</button>
+    </div>
+    <img src="Home Plant.jpg" alt="Introductory Plant Image" class="showcase" />
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Houseplant Haven by Tshimologo Nchoe. All rights reserved.</p>
+  </footer>
+  
+  <script>
+    // Function to navigate to the Products page
+    function goToProducts() {
+      window.location.href = 'products.html';
+    }
+
+    // Function to navigate to the About page
+    function goToAbout() {
+      window.location.href = 'about.html';
+    }
+
+    // Function to navigate to the Contact page
+    function goToContact() {
+      window.location.href = 'contact.html';
+    }
+  </script>
+</body>
+</html>

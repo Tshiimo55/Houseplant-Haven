@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <link rel="shortcut icon" href="plant logo.jpg">
+  <title>About | Houseplant Haven</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f1e8;
+      color: #2c3e50;
+      scroll-behavior: smooth;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 15px 20px;
+	  color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px #4d664d;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #4a634a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2c3e50;
+    }
+
+    .about-section {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      animation: fadeInUp 1s ease;
+    }
+
+    .about-section h2 {
+      font-size: 2rem;
+      color: #4a634a;
+      margin-bottom: 20px;
+    }
+
+    .about-section p {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 20px;
+      color: #3e4e3e;
+    }
+
+    .about-img {
+      width: 30%;
+      max-width: 600px;
+      border-radius: 10px;
+      margin: 20px 0;
+      display: block;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    footer {
+      background-color: #e8e3d9;
+      text-align: center;
+      padding: 20px;
+      color: #4a634a;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-top: 1px solid #dcd6c6;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Houseplant Haven</h1>
+    <nav>
+      <a href="index.html">Home</a>
+      <a href="index.html#products">Products</a>
+      <a href="about.html">About</a>
+      <a href="index.html#contact">Contact</a>
+    </nav>
+  </header>
+
+  <section class="about-section">
+    <h2>About Houseplant Haven</h2>
+    <p>Founded by Tshimologo Nchoe, Houseplant Haven is a passion-driven online store for plant lovers and home growers alike. Whether you're a seasoned plant parent or just getting started, we're here to help you build your indoor jungle with confidence and joy.</p>
+    
+    <img src="plant logo.jpg" alt="Greenhouse or Plants" class="about-img" />
+
+    <p>At Houseplant Haven, we believe plants are more than decoration—they’re wellness companions. We carefully curate our collection to include low-maintenance and exotic houseplants, and we’re committed to sustainable practices every step of the way.</p>
+
+    <p>Thank you for growing with us 🌿</p>
+  </section>
+
+  <footer>
+    <p>&copy; 2025 Houseplant Haven by Tshimologo Nchoe. All rights reserved.</p>
+  </footer>
+</body>
+</html>

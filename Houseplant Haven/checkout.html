@@ -1,0 +1,318 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="plant logo.jpg">
+  <title>Checkout | Houseplant Haven</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f1e8;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 15px 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px #4d664d;
+      font-weight: 600;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #4a634a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2c3e50;
+    }
+
+    .checkout-container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    }
+
+    .checkout-container h2 {
+      text-align: center;
+      color: #4a634a;
+    }
+
+    .checkout-form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+
+    .checkout-form input,
+    .checkout-form select {
+      padding: 12px;
+      font-size: 1rem;
+      border: 1px solid #ccc;
+      border-radius: 8px;
+      width: 100%;
+    }
+
+    .payment-method {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+    }
+
+    .payment-method input[type="radio"] {
+      margin-right: 5px;
+    }
+
+    .payment-method label {
+      font-size: 1rem;
+      font-weight: 600;
+      color: #4a634a;
+    }
+
+    .submit-button {
+      margin-top: 20px;
+      padding: 12px 24px;
+      background-color: #4a634a;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    .submit-button:hover {
+      background-color: #3a513a;
+    }
+
+    footer {
+      background-color: #e8e3d9;
+      text-align: center;
+      padding: 20px;
+      color: #4a634a;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-top: 1px solid #dcd6c6;
+    }
+
+    .total-price {
+      font-size: 1.2rem;
+      margin-top: 20px;
+      text-align: right;
+    }
+
+    /* New styles for order confirmation */
+    .confirmation-container {
+      width: 80%;
+      margin: 0 auto;
+      padding: 30px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      text-align: center;
+    }
+
+    .confirmation-container h2 {
+      color: #4a634a;
+      margin-bottom: 20px;
+    }
+
+    .confirmation-details {
+      margin: 20px 0;
+      padding: 15px;
+      background-color: #f5f1e8;
+      border-radius: 8px;
+      text-align: left;
+    }
+
+    .confirmation-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin-top: 20px;
+    }
+
+    .continue-button {
+      padding: 12px 24px;
+      background-color: #4a634a;
+      color: white;
+      font-size: 1rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      text-decoration: none;
+    }
+
+    .continue-button:hover {
+      background-color: #3a513a;
+    }
+
+    .success-icon {
+      font-size: 60px;
+      color: #4a634a;
+      margin-bottom: 20px;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Houseplant Haven</h1>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒</a>
+    </nav>
+  </header>
+
+  <div id="main-content">
+    <div class="checkout-container">
+      <h2>Checkout</h2>
+      <div class="checkout-form">
+        <!-- Shipping Information -->
+        <input type="text" id="full-name" placeholder="Full Name" required />
+        <input type="text" id="address" placeholder="Shipping Address" required />
+        <input type="text" id="city" placeholder="City" required />
+        <input type="text" id="zip-code" placeholder="Zip Code" required />
+        <input type="email" id="email" placeholder="Email Address" required />
+
+        <!-- Payment Method -->
+        <div class="payment-method">
+          <div>
+            <input type="radio" id="credit-card" name="payment-method" value="Credit Card" checked />
+            <label for="credit-card">Credit Card</label>
+          </div>
+          <div>
+            <input type="radio" id="paypal" name="payment-method" value="PayPal" />
+            <label for="paypal">PayPal</label>
+          </div>
+          <div>
+            <input type="radio" id="bank-transfer" name="payment-method" value="Bank Transfer" />
+            <label for="bank-transfer">Bank Transfer</label>
+          </div>
+        </div>
+
+        <!-- Total Price -->
+        <div class="total-price" id="total-price">Total: R0</div>
+
+        <!-- Submit Button -->
+        <button class="submit-button" onclick="processCheckout()">Complete Checkout</button>
+      </div>
+    </div>
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Houseplant Haven by Tshimologo Nchoe. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Load cart and calculate total
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      return cart;
+    }
+
+    function calculateTotal(cart) {
+      let total = 0;
+      cart.forEach(item => {
+        total += item.subtotal;
+      });
+      return total;
+    }
+
+    // Display total price
+    function renderTotalPrice() {
+      const cart = loadCart();
+      const totalPrice = calculateTotal(cart);
+      document.getElementById("total-price").textContent = "Total: R" + totalPrice;
+    }
+
+    // Generate random order number
+    function generateOrderNumber() {
+      return Math.floor(100000 + Math.random() * 900000);
+    }
+
+    // Handle checkout process
+    function processCheckout() {
+      const cart = loadCart();
+      const fullName = document.getElementById("full-name").value;
+      const address = document.getElementById("address").value;
+      const city = document.getElementById("city").value;
+      const zipCode = document.getElementById("zip-code").value;
+      const email = document.getElementById("email").value;
+      const paymentMethod = document.querySelector('input[name="payment-method"]:checked').value;
+
+      if (!fullName || !address || !city || !zipCode || !email) {
+        alert("Please fill in all fields.");
+        return;
+      }
+
+      const total = calculateTotal(cart);
+      const orderNumber = generateOrderNumber();
+      
+      // Show order confirmation instead of alert
+      showOrderConfirmation(orderNumber, total, fullName, address, city, zipCode, paymentMethod);
+      
+      // DO NOT clear the cart
+      // localStorage.removeItem("cart");
+    }
+
+    // Show order confirmation
+    function showOrderConfirmation(orderNumber, total, name, address, city, zipCode, paymentMethod) {
+      const mainContent = document.getElementById("main-content");
+      
+      mainContent.innerHTML = `
+        <div class="confirmation-container">
+          <div class="success-icon">✓</div>
+          <h2>Thank You for Your Order!</h2>
+          <p>Your order has been received and is being processed.</p>
+          
+          <div class="confirmation-details">
+            <p><strong>Order Number:</strong> #${orderNumber}</p>
+            <p><strong>Total Amount:</strong> R${total}</p>
+            <p><strong>Ship To:</strong> ${name}</p>
+            <p><strong>Address:</strong> ${address}, ${city}, ${zipCode}</p>
+            <p><strong>Payment Method:</strong> ${paymentMethod}</p>
+            <p>A confirmation email has been sent to your email address.</p>
+          </div>
+          
+          <p>We'll notify you when your plants are on their way!</p>
+          
+          <div class="confirmation-buttons">
+            <a href="products.html" class="continue-button">Continue Shopping</a>
+            <a href="cart.html" class="continue-button">Return to Cart</a>
+          </div>
+        </div>
+      `;
+    }
+
+    // Initialize checkout page
+    document.addEventListener("DOMContentLoaded", renderTotalPrice);
+  </script>
+</body>
+</html>

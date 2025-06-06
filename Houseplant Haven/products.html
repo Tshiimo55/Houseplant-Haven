@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="shortcut icon" href="plant logo.jpg">
+  <title>Products | Houseplant Haven</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: #f5f1e8;
+      color: #2c3e50;
+      overflow-x: hidden;
+    }
+
+    header {
+      background-color: transparent;
+      padding: 15px 20px;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+
+    header h1 {
+      font-size: 1.5rem;
+      margin: 0;
+      text-shadow: 1px 1px 2px #4d664d;
+      font-weight: 600;
+      color: #4a634a;
+    }
+
+    nav {
+      display: flex;
+      gap: 15px;
+    }
+
+    nav a {
+      color: #4a634a;
+      text-decoration: none;
+      font-weight: bold;
+      transition: color 0.3s;
+    }
+
+    nav a:hover {
+      color: #2c3e50;
+    }
+
+    .products-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 30px 20px;
+    }
+
+    .products-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+      gap: 30px;
+      margin-top: 30px;
+    }
+
+    .product-card {
+      background-color: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s, box-shadow 0.3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+    }
+
+    .product-image {
+      height: 200px;
+      width: 100%;
+      background-color: #e8e3d9;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #4a634a;
+      font-size: 1.5rem;
+    }
+
+    .product-image img {
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product-name {
+      margin: 0;
+      font-size: 1.2rem;
+      color: #4a634a;
+    }
+
+    .product-price {
+      margin: 10px 0;
+      font-weight: bold;
+      color: #2c3e50;
+    }
+
+    .product-description {
+      margin: 10px 0;
+      font-size: 0.9rem;
+      color: #666;
+    }
+
+    .add-to-cart {
+      background-color: #4a634a;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-weight: bold;
+      width: 100%;
+      transition: background-color 0.3s;
+    }
+
+    .add-to-cart:hover {
+      background-color: #3a513a;
+    }
+
+    .cart-notification {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background-color: #4a634a;
+      color: white;
+      padding: 15px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+      display: none;
+      z-index: 1000;
+    }
+
+    footer {
+      background-color: #e8e3d9;
+      text-align: center;
+      padding: 20px;
+      color: #4a634a;
+      font-size: 0.9rem;
+      margin-top: 40px;
+      border-top: 1px solid #dcd6c6;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Houseplant Haven</h1>
+    <nav>
+      <a href="about.html">About</a>
+      <a href="products.html">Products</a>
+      <a href="contact.html">Contact</a>
+      <a href="cart.html">🛒 <span id="cart-count">0</span></a>
+    </nav>
+  </header>
+
+  <div class="products-container">
+    <h2>Our Plants</h2>
+    <div class="products-grid" id="products-grid">
+      <!-- Products will be populated here by JavaScript -->
+    </div>
+  </div>
+
+  <div class="cart-notification" id="cart-notification">
+    Item added to cart!
+  </div>
+
+  <footer>
+    <p>&copy; 2025 Houseplant Haven by Tshimologo Nchoe. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Sample product data - normally this would come from a backend database
+    const products = [
+      {
+        id: 1,
+        name: "Bonsai Tree",
+        price: 350,
+        description: "A miniture tree with iconic split leaves. Easy to care for.",
+        image: "Bonsai Tree.jpg"
+      },
+      {
+        id: 2,
+        name: "Chinese Money Plant",
+        price: 220,
+        description: "A popular houseplant with round leaves said to bring goodluck.",
+        image: "Chinese Money Plant.jpg"
+      },
+      {
+        id: 3,
+        name: "Mari Gold",
+        price: 450,
+        description: "A vibrant flower known for its golden blooms and pest-repelling properties.",
+        image: "Mari Gold Plant.jpg"
+      },
+      {
+        id: 4,
+        name: "Moth Orchid",
+        price: 280,
+        description: "Elegant indoor orchid flowers with butterfly-like leaves. Great indoor air purifier.",
+        image: "Moth Orchid.jpg"
+      },
+      {
+        id: 5,
+        name: "Pothos",
+        price: 180,
+        description: "Trailing vine with heart-shaped leaves. Very easy to grow.",
+        image: "Pothos plant.jpg"
+      },
+      {
+        id: 6,
+        name: "Swiss Cheese Plant",
+        price: 250,
+        description: "A tropical plant with iconic holey leaves and bold, lush growth.",
+        image: "Swiss Cheese Plant.jpg"
+      }
+    ];
+
+    // Load cart from localStorage
+    function loadCart() {
+      const cart = JSON.parse(localStorage.getItem("cart")) || [];
+      return cart;
+    }
+
+    // Save cart to localStorage
+    function saveCart(cart) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+
+    // Update cart count in navigation
+    function updateCartCount() {
+      const cart = loadCart();
+      const cartCount = document.getElementById("cart-count");
+      if (cartCount) {
+        let totalItems = 0;
+        cart.forEach(item => {
+          totalItems += item.quantity;
+        });
+        cartCount.textContent = totalItems;
+      }
+    }
+
+    // Add item to cart
+    function addToCart(productId) {
+      const product = products.find(p => p.id === productId);
+      if (!product) return;
+
+      let cart = loadCart();
+      let existingItem = cart.find(item => item.id === productId);
+
+      if (existingItem) {
+        existingItem.quantity += 1;
+        existingItem.subtotal = existingItem.quantity * existingItem.price;
+      } else {
+        cart.push({
+          id: product.id,
+          name: product.name,
+          price: product.price,
+          quantity: 1,
+          subtotal: product.price
+        });
+      }
+
+      saveCart(cart);
+      updateCartCount();
+      showNotification();
+    }
+
+    // Show notification
+    function showNotification() {
+      const notification = document.getElementById("cart-notification");
+      notification.style.display = "block";
+      
+      setTimeout(() => {
+        notification.style.display = "none";
+      }, 3000);
+    }
+
+    // Render products
+    function renderProducts() {
+      const productsGrid = document.getElementById("products-grid");
+      if (!productsGrid) return;
+
+      products.forEach(product => {
+        const productCard = document.createElement("div");
+        productCard.className = "product-card";
+        productCard.innerHTML = `
+          <div class="product-image">
+            <img src="${product.image}" alt="${product.name}" />
+          </div>
+          <div class="product-info">
+            <h3 class="product-name">${product.name}</h3>
+            <p class="product-price">R${product.price}</p>
+            <p class="product-description">${product.description}</p>
+            <button class="add-to-cart" onclick="addToCart(${product.id})">Add to Cart</button>
+          </div>
+        `;
+        productsGrid.appendChild(productCard);
+      });
+    }
+
+    // Initialize products page
+    document.addEventListener("DOMContentLoaded", () => {
+      renderProducts();
+      updateCartCount();
+    });
+  </script>
+</body>
+</html>
